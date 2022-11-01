@@ -19,7 +19,7 @@ export const PostForm = forwardRef((props, formRef) =>{
     return (
         <Form name="validate_other" 
             {...formItemLayout} 
-            ref={formRef}
+            ref={formRef}//把form传给creat post button
         >
         <Form.Item 
             name="description"
@@ -34,30 +34,30 @@ export const PostForm = forwardRef((props, formRef) =>{
         <Input />
         </Form.Item>
         <Form.Item label="Dragger">
-        <Form.Item
-            name="uploadPost"
-            valuePropName="fileList"
-            getValueFromEvent={normFile}
-            noStyle
-            rules={[
-            {
-                required: true,
-                message: "Please select an image/video!"
-            }
-            ]}
-        >
-            <Upload.Dragger 
-                name="files" 
-                beforeUpload={() => false}
+            <Form.Item
+                name="uploadPost"
+                valuePropName="fileList"
+                getValueFromEvent={normFile}
+                noStyle
+                rules={[
+                {
+                    required: true,
+                    message: "Please select an image/video!"
+                }
+                ]}
             >
-            <p className="ant-upload-drag-icon">
-                <InboxOutlined />
-            </p>
-            <p className="ant-upload-text">
-                Click or drag file to this area to upload
-            </p>
-            </Upload.Dragger>
-        </Form.Item>
+                <Upload.Dragger 
+                    name="files" 
+                    beforeUpload={() => false}
+                >
+                <p className="ant-upload-drag-icon">
+                    <InboxOutlined />
+                </p>
+                <p className="ant-upload-text">
+                    Click or drag file to this area to upload
+                </p>
+                </Upload.Dragger>
+            </Form.Item>
         </Form.Item>
 
         </Form>

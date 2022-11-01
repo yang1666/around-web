@@ -68,6 +68,7 @@ function Home(props) {
       })
   }
   const renderPosts = (type) => {
+    console.log(posts)
     //case1. type === images => display <Gallary>
     //case2. type === videos =>display videos
     if (!posts || posts.length === 0) {
@@ -107,6 +108,17 @@ function Home(props) {
       );
     }
   };
+  
+  const showPost = (type) => {
+    console.log("type -> ", type);
+    setActiveTab(type);
+
+    setTimeout(() => {
+      setSearchOption({ type: SEARCH_KEY.all, keyword: "" });
+    }, 3000);
+  };
+
+  // const operations = <CreatePostButton onShowPost={showPost} />;
 
   return (
     <div className="home">
@@ -116,7 +128,8 @@ function Home(props) {
           onChange={(key) => setActiveTab(key)}
           defaultActiveKey="image"
           activeKey={activeTab}
-          tabBarExtraContent={<CreatePostButton/>}
+          tabBarExtraContent={<CreatePostButton onShowPost={showPost}/>}//inform: call back function
+
         >
           <TabPane tab="Images" key="image">
             {renderPosts("image")}
